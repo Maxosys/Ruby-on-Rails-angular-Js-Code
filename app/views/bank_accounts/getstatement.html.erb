@@ -1,0 +1,65 @@
+
+<div class="jumbotron text-center">
+  <h2>BitMinistry : Banking Application</h2>  
+</div>
+  
+<div class="container">
+  <div class="row">
+    <%= render 'leftbar' %>
+    <div class="col-sm-6"  >
+    <div class="col-sm-12">
+      
+      <label> Statement : <span class="pull-right" style="color: #60E45A"> <% if  $msg.present? %> <%=$msg%> <% end %></span></label>
+
+    </div>
+    <div class="col-sm-12" style="margin-top: 15px;">
+   
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <% if @result.present? %>
+    
+    <% @result.each do |row|%>
+
+    <%
+        my_string = row['amount'].to_s
+      
+      if my_string.include? "-"        
+        $status = "Debit"
+      else
+        $status = "Credit"
+      end
+    %>
+
+      <tr>
+        <td><%=$status%></td>
+        <td><%=row['amount']%></td>
+        <td><%=row['created_at']%></td>
+      </tr>
+
+    <% 
+  end
+    else %>
+        <tr>
+        <th colspan="3"> Not Found </th>
+        </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+
+    </div>
+
+    </div>
+    <div class="col-sm-2">
+    
+    </div>
+  </div>
+</div>

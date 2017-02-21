@@ -1,0 +1,23 @@
+    <div class="col-sm-4" ng-app="BankApp" ng-controller="GetcurrentbalanceController">      
+      
+      <%  if session[:username].present?   %>
+
+          <h3> <a href="/?name=<%=session[:username]%>"> <strong><%=session[:username]%> </strong> </a> (<a href="/logout"> logout </a>) </h3>
+
+      
+      <% end %>
+
+      <h4>
+          <a href="/deposite">Deposite Money</a>
+      </h4>
+      <h4  > 
+           <a href="javascript:;" ng-click='getcurrentbalanceFunction("<%=session[:username]%>")' >Get The Current Balance</a>
+      </h4>      
+      <h4> 
+           <a href="/transfermoney">Transfer Money</a>
+      </h4>
+      <h4> 
+           <a href="/getstatement">Get Statement</a>
+      </h4> 
+
+    </div>
